@@ -1,0 +1,39 @@
+<div class="container horz-center">
+  <div class="row justify-content-center">
+
+    <div class="col-3">
+      <div class="row h-100 justify-content-center align-items-center">
+        <gm-stats
+          [tShapes] = "tShapes"
+          [jShapes] = "jShapes"
+          [zShapes] = "zShapes"
+          [oShapes] = "oShapes"
+          [sShapes] = "sShapes"
+          [lShapes] = "lShapes"
+          [iShapes] = "iShapes"
+        ></gm-stats>
+        <button class="btn game-board border-3 text-white w-75" (click)="child.play()">Play!</button>
+      </div>  
+    </div>
+
+    <div class="col-auto">
+        <gm-board #child
+          (onPointsChanged) = "setScore($event)"
+          (onLinesChanged)  = "setLinesCleared($event)"
+          (onLevelChanged)  = "setLevel($event)"
+          (onStatsChanged)  = "setStats($event)"
+          (onNextPiece)     = "setNextPiece($event)">
+        </gm-board>
+    </div>
+
+    <div class="col-3">
+      <div class="row h-100 justify-content-center align-items-center">
+        <gm-score [scoreNum] = "score"></gm-score>
+        <gm-lines [linesCleared] = "lines"></gm-lines>
+        <gm-level [level] = "level"></gm-level>
+        <gm-nextb [nextPiece] = "next"></gm-nextb>
+      </div>
+    </div>
+
+  </div>
+</div>
